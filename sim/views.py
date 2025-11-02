@@ -23,8 +23,17 @@ def lobby(request: HttpRequest) -> HttpResponse:
 def chat(request: HttpRequest) -> HttpResponse:
     if not request.session.get('username'):
         return redirect('lobby')
+    # Handle form submission
+    if request.method == 'POST':
+        content = request.POST.get("content")
+        if content:
+            username = request.session.get("username")
+            author, _ = models.Author.objects.get_or_create(name=username)
+            models.Message.objects.create(author=author, content=content)
+        return redirect('chat')   # reload page after sending
     messages = models.Message.objects.order_by("created_at")
     return render(request, 'chat.html', {"messages": messages})
+
 
 def create_message(request: HttpRequest) -> HttpResponse:
     content = request.POST.get("content")
