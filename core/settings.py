@@ -33,7 +33,8 @@ ALLOWED_HOSTS = ['10.216.14.61', '0.0.0.0', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'daphne',             
-    'sim',                
+    'sim',         
+    'channels',     
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -73,7 +74,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'core.wsgi.application'
 
 ASGI_APPLICATION = 'core.asgi.application'
-
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    },
+}
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
