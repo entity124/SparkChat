@@ -48,7 +48,7 @@ message_count = 0 # temp while waitiing for the actuale function
 
 p = [0,0,0,0,0] # probability for levels
 
-p_val = {'message count p': [0.12,0.09,0.06,0.04,0.03],
+p_val = {'message count p': [0.16,0.11,0.06,0.04,0.03],
          'emotion p': [0.24,0.03,0.12,0.19]} # probability values []
 
 e_classifier = pipeline(
