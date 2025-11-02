@@ -132,3 +132,5 @@ def main(message):
         return level_5(message)
     return message
 
+main(message)
+
